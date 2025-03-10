@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="back">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+            <h2>Transfer Money</h2>
+        </header>
+
+        <!-- Transfer Form -->
+        <div class="transfer-card">
+            <h3>Send Money</h3>
+
+            <label for="recipient">Recipient Name</label>
+            <input type="text" id="recipient" placeholder="Enter recipient's name" required>
+
+            <label for="account">Recipient Account</label>
+            <input type="text" id="account" placeholder="Enter account number" required>
+
+            <label for="amount">Amount ($)</label>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+
+            <label for="note">Note (Optional)</label>
+            <textarea id="note" placeholder="Add a note (optional)"></textarea>
+
+            <button onclick="confirmTransfer()">Send Money <i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function confirmTransfer() {
+            let recipient = document.getElementById("recipient").value;
+            let account = document.getElementById("account").value;
+            let amount = document.getElementById("amount").value;
+
+            if (recipient === ""  ||account === "" || amount === "") {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            if (amount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            let confirmMsg = 'Confirm transfer of $5000 to ${recipient} (Account: ${account})?';
+            if (confirm(confirmMsg)) {
+                alert("Your Account is Currently on Hold. Visit The Nearest Branch for More information.");
+            }
+        }
+    </script>
+</body>
+</html>
